@@ -301,7 +301,7 @@ function showList () {
             //create div.filter-search for skills require
             const skillsRequire = document.createElement('div')
             skillsRequire.classList.add('filter-search')
-            skillsRequire.setAttribute('id', 'skills')
+            skillsRequire.classList.add('skills')
             jobSkills.appendChild(skillsRequire)
             skillsRequire.textContent = data[i].languages[j];
             jobList.classList.add(data[i].languages[j])
