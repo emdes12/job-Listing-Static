@@ -272,7 +272,7 @@ function showList () {
         //create div.filter-search for role and append to jobSkills
         const roleDiv = document.createElement('div')
         roleDiv.classList.add('filter-search')
-        roleDiv.setAttribute('id', 'skills')
+        roleDiv.classList.add('skills')
         jobSkills.appendChild(roleDiv)
         roleDiv.textContent = data[i].role;
         jobList.classList.add(data[i].role)
