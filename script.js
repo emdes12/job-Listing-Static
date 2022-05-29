@@ -181,6 +181,7 @@ function showList () {
         //creat img#comp-logo
         imgCompLogo = document.createElement('img');
         imgCompLogo.classList.add('img-comp-logo');
+        imgCompLogo.setAttribute('id', data[i].id)
         compLogo.appendChild(imgCompLogo);
         imgCompLogo.setAttribute('src', data[i].logo)
 
