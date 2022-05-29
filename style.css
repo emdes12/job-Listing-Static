@@ -1,0 +1,254 @@
+:root {
+    --desaturate-dark-cyan: hsl(180, 29%, 50%);
+    --light-grayish-cyan: hsl(180, 52%, 96%);
+    --light-grayish-cyan-2: hsl(180, 31%, 95%);
+    --dark-grayish-cyan: hsl(180, 8%, 52%);
+    --very-dark-grayish-cyan: hsl(180, 14%, 20%);
+}
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
+
+* {
+    font-family: League Spartan, sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--light-grayish-cyan);
+}
+
+header {
+    background-image: url(/images/bg-header-mobile.svg);
+    background-color: var(--desaturate-dark-cyan);
+    height: 157px;
+    position: relative;
+}
+
+nav {
+    background-color: white;
+    border-radius: 7.5px;
+    position: absolute;
+    top: 122px;
+    padding: 10px;
+    margin: 0 23px;
+    width: calc(100% - 46px);
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    left: 0%;
+    box-shadow: 0px 5.02px 20px -10px   var(--desaturate-dark-cyan);
+}
+
+.filter {
+    list-style: none;
+    display: flex;
+    padding: 0 0 0 0;
+    width: calc(100% - 60px);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-search {
+    background-color: var(--light-grayish-cyan-2);
+    display: flex;
+    color: var(--desaturate-dark-cyan);
+    font-weight: 700;
+    margin: 5px;
+    font-size: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.filter-search li {
+    padding: 3px 7px;
+}
+
+.clear-icon {
+    width: 32px;
+    background-color: var(--desaturate-dark-cyan);
+    height: 32px;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in 0.5s;
+}
+
+
+.clear-icon:hover {
+    background-color: var(--very-dark-grayish-cyan);
+}
+
+.clear-filter {
+    width: 50px;
+    height: 30px;
+    padding: 20px;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.clear-filter:hover span {
+    padding: 0;
+    margin: 0;
+    text-decoration: underline;
+    color: var(--desaturate-dark-cyan);
+}
+
+.clear-filter span {
+    transition: all ease 1s;
+    cursor: pointer;
+    color: var(--dark-grayish-cyan);
+}
+
+main {
+    margin: 100px 18px 0 18px;
+    width: 100%;
+}
+
+.job {
+    list-style: none;
+    margin: none;
+    padding-left: 0;
+}
+
+.job-list {
+    background-color: white;
+    width: calc(100% - 36px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 30px 24px 24px 24px;
+    border-radius: 5px;
+    box-shadow: 0px 5.02px 20px -10px   var(--desaturate-dark-cyan);
+}
+
+.job-list:not(:last-child) {
+    margin-bottom: 40px;
+}
+
+.comp-logo {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    top: -24px;
+}
+
+.comp-logo img {
+    width: 100%;
+}
+
+
+.job-list.featured {
+    border-left: 5px solid var(--desaturate-dark-cyan);
+    
+}
+
+.job-details {
+    display: flex;
+    flex-direction: column;
+    height: 90px;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.upline {
+    display: flex;
+    justify-content:flex-start;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.comp-name {
+    color: var(--desaturate-dark-cyan);
+}
+
+.tag-new,
+.tag-featured {
+    font-size: 10px;
+    padding: 5px 8px;
+    font-weight: 700;
+    border-radius: 15px;
+    color: white;
+}
+
+.tag-new {
+    background-color: var(--desaturate-dark-cyan);
+}
+
+.tag-featured {
+    background-color: var(--very-dark-grayish-cyan);
+}
+
+.post-vacant {
+    color: var(--very-dark-grayish-cyan);
+    font-weight: bold;
+}
+
+.job-request {
+    color: var(--dark-grayish-cyan);
+}
+
+.job-skills {
+    display: flex;
+    gap: 2px;
+    border-top: 1px solid var(--dark-grayish-cyan);
+    margin: 10px 0 0 0;
+    padding: 5px 0 0 0;
+    flex-wrap: wrap;
+}
+
+.job-skills .filter-search {
+    border-radius: 0;
+    height: 30px;
+    padding: 3px 7px;
+    transition: all ease-in-out .5s;
+}
+
+#skills {
+    cursor: pointer;
+}
+
+.job-skills .filter-search:hover {
+    background-color: var(--desaturate-dark-cyan);
+    color: white;
+}
+
+
+@media (min-width: 900px) {
+    header {
+        background-image: url(/images/bg-header-desktop.svg);
+    }
+
+    nav {
+        margin: 0 128px;
+        width: calc(100% - 256px);
+    }
+
+    .job-list {
+        margin: 0 110px;
+        width: calc(100% - 256px);
+        flex-direction: row;
+        align-content: center;
+    }
+
+    .job-skills {
+        border-top: none;
+        margin-left: 25px;
+    }
+
+    .job-details {
+        margin-right: 25px;
+    }
+    
+    .comp-logo {
+        position: static;
+        margin-right: 25px;
+        width: 88px;
+        height: 88px;
+    }
+}
