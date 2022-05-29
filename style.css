@@ -209,7 +209,7 @@ main {
     transition: all ease-in-out .5s;
 }
 
-#skills {
+.skills {
     cursor: pointer;
 }
 
