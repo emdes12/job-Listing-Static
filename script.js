@@ -294,6 +294,7 @@ function showList () {
             </div>
           </div>`;
           navig.style.display = 'flex'
+          main.stlye.margin = "100px 0 0 0"
           roleDiv.removeEventListener('click', roleInsert)
         }
 
