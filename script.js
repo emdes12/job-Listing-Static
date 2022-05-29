@@ -294,7 +294,7 @@ function showList () {
             </div>
           </div>`;
           navig.style.display = 'flex'
-          main.stlye.margin = "100px 0 0 0"
+          main.stlye.marginTop = "100px"
           roleDiv.removeEventListener('click', roleInsert)
         }
 
@@ -326,6 +326,7 @@ function showList () {
                 </div>
               </div>`;
               navig.style.display = 'flex';
+              main.stlye.marginTop = "100px"
               skillsRequire.removeEventListener('click', skillInsert)
             }
         }
