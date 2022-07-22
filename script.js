@@ -321,7 +321,7 @@ function showList () {
                 ${skillInput}
                 </li>
       
-                <div class="clear-icon">
+                <div  onclick="clearMe(this)" class="clear-icon">
                   <img src="/images/icon-remove.svg" alt="icon-remove">
                 </div>
               </div>`;
@@ -352,6 +352,9 @@ document.querySelectorAll('.clear-icon').forEach(listEvent)
 function listEvent(element)  {
     element.addEventListener('click', clearSearch)
 };
+
+function clearMe(e) {
+    e.parentElement.remove()
 
 function clearSearch ()  {
     document.querySelector('.filter-search').style.display = 'none'
