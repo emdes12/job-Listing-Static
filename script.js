@@ -162,11 +162,10 @@ const main = document.querySelector('#main')
 
 //show job list
 
-function showList () {
+function showList (dataJob) {
+  job.innerHTML = "";
 
-
-
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < dataJob.length; i++) {
         //create li.job-list
         const jobList = document.createElement("li");
         jobList.innerText = '';
@@ -181,9 +180,9 @@ function showList () {
         //creat img#comp-logo
         imgCompLogo = document.createElement('img');
         imgCompLogo.classList.add('img-comp-logo');
-        imgCompLogo.setAttribute('alt', data[i].id)
+        imgCompLogo.setAttribute('id', dataJob[i].id)
         compLogo.appendChild(imgCompLogo);
-        imgCompLogo.setAttribute('src', data[i].logo)
+        imgCompLogo.setAttribute('src', dataJob[i].logo)
 
         //create and append div.job-details
         const jobDetails = document.createElement('div')
@@ -199,14 +198,14 @@ function showList () {
         const compName = document.createElement('div')
         compName.classList.add('comp-name')
         upLine.appendChild(compName)
-        compName.textContent = data[i].company
+        compName.textContent = dataJob[i].company
 
         //create div.tag-new append to upline
         const tagNew = document.createElement('div')
         tagNew.classList.add('tag-new')
         upLine.appendChild(tagNew)
         let newTag;
-        switch (data[i].new) {
+        switch (dataJob[i].new) {
             case true :
                 newTag = 'NEW';
                 break; 
@@ -221,7 +220,7 @@ function showList () {
         tagFeatured.classList.add('tag-featured')
         upLine.appendChild(tagFeatured)
         let feat;
-        switch (data[i].featured) {
+        switch (dataJob[i].featured) {
             case true :
                 feat = 'FEATURED';
                 jobList.classList.add('featured')
@@ -236,7 +235,7 @@ function showList () {
         const postVacant = document.createElement('div')
         postVacant.classList.add('post-vacant')
         jobDetails.appendChild(postVacant)
-        postVacant.textContent = data[i].position;
+        postVacant.textContent = dataJob[i].position;
 
         //create div.job-request
         const jobRequest = document.createElement('div')
@@ -245,7 +244,7 @@ function showList () {
 
         //create span.posted-time append to jobRequest
         const postTime = document.createElement('span')
-        postTime.textContent = data[i].postedAt
+        postTime.textContent = dataJob[i].postedAt
         jobRequest.appendChild(postTime)
 
         //add &#183; (.) to jobRequest
@@ -253,7 +252,7 @@ function showList () {
 
         //create span.contract append to jobRequest
         const contractType = document.createElement('span')
-        contractType.textContent = data[i].contract
+        contractType.textContent = dataJob[i].contract
         jobRequest.appendChild(contractType)
 
         //add &#183; (.) to jobRequest
@@ -261,7 +260,7 @@ function showList () {
 
         //create span.location append to jobRequest
         const countryLocation = document.createElement('span')
-        countryLocation.textContent = data[i].location
+        countryLocation.textContent = dataJob[i].location
         jobRequest.appendChild(countryLocation)
 
         //create div.job-skills and append to jobList
@@ -272,43 +271,43 @@ function showList () {
         //create div.filter-search for role and append to jobSkills
         const roleDiv = document.createElement('div')
         roleDiv.classList.add('filter-search')
-        roleDiv.classList.add('skills')
+        roleDiv.setAttribute('id', 'skills')
         jobSkills.appendChild(roleDiv)
-        roleDiv.textContent = data[i].role;
-        jobList.classList.add(data[i].role)
+        roleDiv.textContent = dataJob[i].role;
+        jobList.classList.add(dataJob[i].role)
 
-        let roleInput = data[i].role;
+        let roleInput = dataJob[i].role;
 
         roleDiv.addEventListener('click', roleInsert)
         
         function roleInsert () {
             filterEnter.push(roleInput)
             console.log(filterEnter)
+            filterList2Show(roleInput)
             filterBody.innerHTML += `<div class="filter-search">
             <li>
             ${roleInput}
             </li>
   
-            <div class="clear-icon">
+            <div class="clear-icon" onclick="clearMe(this)">
               <img src="/images/icon-remove.svg" alt="icon-remove">
             </div>
           </div>`;
           navig.style.display = 'flex'
-          main.stlye.marginTop = "100px"
           roleDiv.removeEventListener('click', roleInsert)
         }
 
         //new loop for skills-require
-        for (var j = 0; j < data[i].languages.length; j++) {
+        for (var j = 0; j < dataJob[i].languages.length; j++) {
             //create div.filter-search for skills require
             const skillsRequire = document.createElement('div')
             skillsRequire.classList.add('filter-search')
             skillsRequire.classList.add('skills')
             jobSkills.appendChild(skillsRequire)
-            skillsRequire.textContent = data[i].languages[j];
-            jobList.classList.add(data[i].languages[j])
+            skillsRequire.textContent = dataJob[i].languages[j];
+            jobList.classList.add(dataJob[i].languages[j])
             
-            let skillInput = data[i].languages[j];
+            let skillInput = dataJob[i].languages[j];
 
             
             
@@ -316,17 +315,17 @@ function showList () {
             function skillInsert() {
                 filterEnter.push(skillInput)
                 console.log(filterEnter)
+                filterListShow(skillInput);
                 filterBody.innerHTML += `<div class="filter-search">
                 <li>
                 ${skillInput}
                 </li>
       
-                <div  onclick="clearMe(this)" class="clear-icon">
+                <div class="clear-icon" onclick="clearMe(this)">
                   <img src="/images/icon-remove.svg" alt="icon-remove">
                 </div>
               </div>`;
               navig.style.display = 'flex';
-              main.stlye.marginTop = "100px"
               skillsRequire.removeEventListener('click', skillInsert)
             }
         }
@@ -338,25 +337,53 @@ function showList () {
 
 
 
-showList()
+showList(data)
 
 
+function filterListShow(skillRole){
+
+  let store = []
+  for (let i = 0; i < data.length; i++) {
+    let lang = []
+    
+    for (let j = 0; j < data[i].languages.length; j++) {
+      
+      if(data[i].languages[j] === skillRole) {
+          lang = data[i]
+          store.push(lang)
+      } 
+    } 
+  }
+  showList(store)
+}
+
+function filterList2Show(skillRole){
+
+  let store = []
+  for (let i = 0; i < data.length; i++) {
+    let lang = []
+    
+      
+      if(data[i].role === skillRole) {
+          lang = data[i]
+          store.push(lang)
+      } 
+  }
+  showList(store)
+}
+
+function clearMe(e) {
+  e.parentElement.remove()
+}
 
 clearFilter.addEventListener('click', () => {
     filterBody.innerHTML = '';
     navig.style.display = 'none'
     console.log('remove')
+    showList(data)
 })
 
-document.querySelectorAll('.clear-icon').forEach(listEvent)
-function listEvent(element)  {
-    element.addEventListener('click', clearSearch)
-};
-
-function clearMe(e) {
-    e.parentElement.remove()
-}
-
-function clearSearch ()  {
+function listEvent()  {
     document.querySelector('.filter-search').style.display = 'none'
+    console.log('remove')
 }
