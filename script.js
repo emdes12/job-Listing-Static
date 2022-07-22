@@ -355,6 +355,7 @@ function listEvent(element)  {
 
 function clearMe(e) {
     e.parentElement.remove()
+}
 
 function clearSearch ()  {
     document.querySelector('.filter-search').style.display = 'none'
